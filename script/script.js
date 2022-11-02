@@ -13,7 +13,7 @@ const form = document.getElementById("locationInput");
 const search = document.querySelector(".search");
 const btn = document.querySelector(".submit");
 const cities = document.querySelectorAll(".city");
-
+// import * as from './modules/dom';
 //Default city when the page load
 
 let cityInput = "London";
@@ -87,7 +87,7 @@ function fetchWeatherData() {
 
       //Get the date and time from city we extract
       const date = data.location.localtime;
-      // I create 3 constant year month days and I use the function substring which takes as parameter a start index and an end index example localtime : "2022-11-01 10:15""
+      // I create 3 constant year month days and I use the function substring which takes as parameter a start index and an end index ,example localtime : "2022-11-01 10:15""
       const y = parseInt(date.substr(0, 4));
       // I start my index at 5 and take the 2 value after
       const m = parseInt(date.substr(5, 2));
@@ -196,3 +196,11 @@ function fetchWeatherData() {
 }
 // Launch directly my function cause my Default city when the page load are london
 fetchWeatherData();
+
+//TDL
+
+// Import all my dom from an module
+
+// Recreate my app in an object
+
+// Extract and display the country from the searched value
