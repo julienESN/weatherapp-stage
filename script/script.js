@@ -23,7 +23,7 @@ let cityInput = "London";
 cities.forEach((city) => {
   city.addEventListener("click", (e) => {
     //Change from default city to the clicked one
-    cityInput = e.target.innerHTML;
+    cityInput = e.target.textContent;
     // Function that fetches and displays all the data from the Weather API
     fetchWeatherData();
     //Fade out the app (Animation)
@@ -82,8 +82,8 @@ function fetchWeatherData() {
     .then((data) => {
       console.log(data);
       //   Adding temperature and weather condition to the page
-      temp.innerHTML = data.current.temp_c + "°";
-      conditionOutput.innerHTML = data.current.condition.text;
+      temp.textContent = data.current.temp_c + "°";
+      conditionOutput.textContent = data.current.condition.text;
 
       //Get the date and time from city we extract
       const date = data.location.localtime;
@@ -97,10 +97,10 @@ function fetchWeatherData() {
       const time = date.substr(11);
       //Reformat the date and add it to the page
       // This will also return the day of the week as we return the function that returns itself weekday
-      dateOutput.innerHTML = `${dayOfTheWeek(m, d, y)} ${m},${d} ${y}`;
-      timeOutput.innerHTML = time;
+      dateOutput.textContent = `${dayOfTheWeek(m, d, y)} ${m},${d} ${y}`;
+      timeOutput.textContent = time;
       // Add the name of the city into the page
-      nameOutput.innerHTML = data.location.name;
+      nameOutput.textContent = data.location.name;
       // Get the corresponding icon url for the weather and extract  it with subtr and .length and just after i can indicate the src to add it on my app
       const iconId = data.current.condition.icon.substr(
         "//cdn.weatherapi.com/weather/64x64/".length
@@ -109,9 +109,9 @@ function fetchWeatherData() {
       //  Reformat the icon src to my own local folder path and add it on the page
       icon.src = "./icons/" + iconId;
       //Add the weather details to the page with my api
-      cloudOutput.innerHTML = data.current.cloud + "%";
-      humidityOutput.innerHTML = data.current.humidity + "%";
-      windOutput.innerHTML = data.current.wind_kph + "km/h";
+      cloudOutput.textContent = data.current.cloud + "%";
+      humidityOutput.textContent = data.current.humidity + "%";
+      windOutput.textContent = data.current.wind_kph + "km/h";
       //Set default time of the day
       let timeOfDay = "day";
       //Get the unique id for each weather condition
