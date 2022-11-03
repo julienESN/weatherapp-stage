@@ -13,7 +13,8 @@ const form = document.getElementById("locationInput");
 const search = document.querySelector(".search");
 const btn = document.querySelector(".submit");
 const cities = document.querySelectorAll(".city");
-// import * as from './modules/dom';
+// import * as from './modules/dom'; (In test)
+
 //Default city when the page load
 
 let cityInput = "London";
@@ -64,7 +65,7 @@ function dayOfTheWeek(day, month, year) {
     "Friday",
     "Saturday",
   ];
-  // I return my weekday array which generates a date taking the 3 parameters that we will fill in after using the api and for the 'new date' we will use the prototype function. getday()
+  // I return my weekday array which generates a date taking the 3 parameters that we will fill in after using the api and for the 'new date' we will use the prototype function.getday()
   // which generates a number between 1 and 7 and which will take the direct value of the array is why we return it
   return weekday[new Date(`${day}/${month}/${year}/`).getDay()];
 }
@@ -83,22 +84,24 @@ function fetchWeatherData() {
       console.log(data);
       //   Adding temperature and weather condition to the page
       temp.textContent = data.current.temp_c + "°";
+      // Adding condition content : Example : Partly Cloudy
       conditionOutput.textContent = data.current.condition.text;
 
       //Get the date and time from city we extract
       const date = data.location.localtime;
       // I create 3 constant year month days and I use the function substring which takes as parameter a start index and an end index ,example localtime : "2022-11-01 10:15""
+      // I start my index at 0 and take the 4 value after
       const y = parseInt(date.substr(0, 4));
       // I start my index at 5 and take the 2 value after
       const m = parseInt(date.substr(5, 2));
       // I start my index at 8 and take the 2 value after
       const d = parseInt(date.substr(8, 2));
-      //Extract the time from the location using substring starting at 11, substring not need a second parameter
-      const time = date.substr(11);
+      //Extract the time from the location using substring starting at 11, substring not need everytime a second parameter
       //Reformat the date and add it to the page
+      const time = date.substr(11);
+      timeOutput.textContent = time;
       // This will also return the day of the week as we return the function that returns itself weekday
       dateOutput.textContent = `${dayOfTheWeek(m, d, y)} ${m},${d} ${y}`;
-      timeOutput.textContent = time;
       // Add the name of the city into the page
       nameOutput.textContent = data.location.name;
       // Get the corresponding icon url for the weather and extract  it with subtr and .length and just after i can indicate the src to add it on my app
@@ -197,10 +200,28 @@ function fetchWeatherData() {
 // Launch directly my function cause my Default city when the page load are london
 fetchWeatherData();
 
-//TDL
+/////////////////////////////////
+//TDL (Put the tdl in notion later not in the scrip)
+// Put the api key in .env
+
+//Replace my day function with dayjs dependencies (just an idea)
 
 // Import all my dom from an module
 
 // Recreate my app in an object
 
+// Comment my css
+
 // Extract and display the country from the searched value
+
+// Replace all my else if || with another method (maybe put all my condition code in an object and boucle and use array.find)
+
+//Reussite
+
+// L'app marche avec toute les villes trouvé avec l'api
+
+//Difficulter
+
+// Recréée mon app dans un object (en cours)
+// Comprendre pourquoi certaine ville reponde une temperature avec une decimale
+// Import all my dom with a modules
